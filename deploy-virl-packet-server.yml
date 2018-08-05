@@ -1,0 +1,11 @@
+- hosts: localhost
+  connection: local
+  remote_user: root
+  gather_facts: false
+  become: false
+
+
+  tasks:
+    - name: include the virl-packet-net-provision role
+      include_role:
+        name: virl-packet-net-provision

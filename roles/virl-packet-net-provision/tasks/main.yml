@@ -1,0 +1,45 @@
+---
+# tasks file for virl-packet-net-provision
+
+- name: include vaulted variable file
+  include_vars:
+    file: vault.yml
+
+- name: get project id
+  uri:
+    url: https://api.packet.net/projects
+    method: GET
+    headers:
+      accept: "application/json; version=1"
+      content-type: "application/json"
+      x-auth-token: "{{ api_token }}"
+  register: project_info
+  run_once: true
+
+- name: set project_id fact
+  set_fact:
+    project_id: "{{ (project_info.json.projects | selectattr('name','equalto', project_name) | first).id }}"
+  run_once: true
+
+
+- name: provision VIRL instance
+  packet_device:
+    auth_token: "{{ api_token }}"
+    count: 1
+    user_data: |
+      #!ipxe
+      set base http://ipxe-load-{{ facility }}.virl.info
+      kernel ${base}/vmlinuz initrd=initrd.img boot=live repo=${base} console=ttyS1,115200 union=overlay config components noswap edd=on nomodeset noeject locales=en_US.UTF-8 keyboard-layouts=NONE fetch=${base}/virl.1i.squashfs vga=791 ip= net.ifnames=0 quiet nosplash
+      initrd ${base}/initrd.img
+      boot
+    facility: "{{ facility }}"
+    hostnames: "{{ virl_hostname }}"
+    operating_system: "{{ operating_system }}"
+    project_id: "{{ project_id }}"
+    wait_for_public_IPv: 4
+    wait_timeout: "{{ wait_timeout }}"
+    plan: "{{ plan }}"
+    features:
+      billing_cycle: "{{ billing_cycle }}"
+    state: "{{ instance_state }}"
+  register: provision_info

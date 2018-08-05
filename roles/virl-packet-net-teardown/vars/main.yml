@@ -1,0 +1,3 @@
+---
+# vars file for virl-packet-net-teardown
+api_token: "{{ vaulted_api_token }}"

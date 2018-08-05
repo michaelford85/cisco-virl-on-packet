@@ -1,0 +1,4 @@
+---
+# vars file for virl-packet-net-provision
+api_token: "{{ vaulted_api_token }}"
+ssh_pubkey_file: "{{ vaulted_ssh_key }}"

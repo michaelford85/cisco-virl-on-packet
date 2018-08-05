@@ -1,0 +1,20 @@
+---
+# defaults file for virl-packet-net-provision
+project_name: cisco_virl
+operating_system: custom_ipxe
+ssh_pubkey_file: ~/.ssh/packet_key.pub
+ssh_pubkey_label: packet_pub_ssh
+virl_hostname: ciscovirl.example.com
+wait_timeout: 900
+plan: t1.small.x86
+    # acceptable sizes are:
+    # t1.small.x86
+    # c1.small.x86
+    # m1.xlarge.x86
+instance_state: active
+billing_cycle: hourly
+facility: sjc1 # Sunnyvale
+    # some local facility alternatives are:
+    # ams1 - Amsterdam
+    # nrt1 - Tokyo
+    # ewr1 - Parsippany

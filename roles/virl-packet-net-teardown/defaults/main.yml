@@ -1,0 +1,5 @@
+---
+# defaults file for virl-packet-net-teardown
+
+project_name: cisco_virl
+instance_state: absent

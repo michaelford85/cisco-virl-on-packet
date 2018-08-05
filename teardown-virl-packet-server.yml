@@ -1,0 +1,16 @@
+- hosts: localhost
+  connection: local
+  remote_user: root
+  gather_facts: false
+  become: false
+
+
+  tasks:
+    - name: include the virl-packet-net-teardown role
+      include_role:
+        name: virl-packet-net-teardown
+
+#    - name: include the cisco-virl-install role
+#      include_role:
+#        name: cisco-virl-install
+#      when: instance_state == 'present'
