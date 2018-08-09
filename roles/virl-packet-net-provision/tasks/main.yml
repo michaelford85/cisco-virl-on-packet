@@ -33,8 +33,10 @@
       initrd ${base}/initrd.img
       boot
       #cloud-config
-      license_file: VoRI0mvT.virl.info.pem
-      uwm_password: password
+      license_file: {{ licensefile }}
+      uwm_password: {{ uwmpassword }}
+      guest_password: {{ guestpassword }}
+      virl_password: {{ virlpassword }}
 
     facility: "{{ facility }}"
     hostnames: "{{ virl_hostname }}"
