@@ -32,6 +32,10 @@
       kernel ${base}/vmlinuz initrd=initrd.img boot=live repo=${base} console=ttyS1,115200 union=overlay config components noswap edd=on nomodeset noeject locales=en_US.UTF-8 keyboard-layouts=NONE fetch=${base}/virl.1i.squashfs vga=791 ip= net.ifnames=0 quiet nosplash
       initrd ${base}/initrd.img
       boot
+      #cloud-config
+      license_file: VoRI0mvT.virl.info.pem
+      uwm_password: password
+
     facility: "{{ facility }}"
     hostnames: "{{ virl_hostname }}"
     operating_system: "{{ operating_system }}"
