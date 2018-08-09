@@ -1,4 +1,11 @@
 ---
 # vars file for virl-packet-net-provision
 api_token: "{{ vaulted_api_token }}"
+uwmpassword: "{{ vaulted_uwm_password }}"
+licensefile: "{{ vaulted_license_file }}"
+guestpassword: "{{ vaulted_guest_password }}"
+virlpassword: "{{ vaulted_virl_password}}"
 ssh_pubkey_file: "{{ vaulted_ssh_key }}"
+api_token: "{{ vaulted_api_token }}"
+licensepem: "{{ vaulted_license_pem }}"
+#vaulted_ssh_key: <your_ssh_key>
