@@ -37,7 +37,7 @@
       uwm_password: {{ uwmpassword }}
       guest_password: {{ guestpassword }}
       virl_password: {{ virlpassword }}
-#      license_pem: {{ licensepem }}
+#      license_pem: {{ lookup('file', '../files/virl_license.pem') }}
 
     facility: "{{ facility }}"
     hostnames: "{{ virl_hostname }}"
